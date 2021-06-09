@@ -1,6 +1,6 @@
 import styles from "../styles/authpage.module.css";
 import { Link } from "react-router-dom";
-import { VscNote } from "react-icons/vsc";
+import { TiWeatherCloudy } from "react-icons/ti";
 import { FiArrowRight } from "react-icons/fi";
 import { useState } from "react";
 
@@ -14,7 +14,7 @@ export default function AuthPage() {
   return (
     <div className={styles.authpage}>
       <span>
-        <VscNote />
+        <TiWeatherCloudy />
         <Link to="/">WeatherApp</Link>
       </span>
       <h2>{loginMode ? "Login to WeatherApp" : "Create a WeatherApp account"}</h2>
