@@ -1,38 +1,63 @@
 import Navbar from "../components/Navbar";
 import styles from "../styles/weatherDetailPage.module.css";
 import { IoIosCloudy } from "react-icons/io";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import apiUrl from "../apiUrl";
 
 export default function WeatherDetailPage() {
-  const weatherDetails = [
-    { property: "Humidity", value: "63%" },
-    { property: "Wind", value: "10km/s" },
-    { property: "Cloudy", value: "84%" },
-  ];
+  const params = useParams();
+
+  const [weatherData, setWeatherData] = useState({});
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    axios
+      .get(`${apiUrl}/weather/${params.city}`)
+      .then((res) => {
+        setWeatherData(res.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+  }, []);
 
   return (
     <>
-      <Navbar />
-      <main className={styles.weatherDetailPage}>
-        <section>
-          <h2>20 degrees</h2>
-          <p style={{ fontWeight: "bold", marginTop: "-10px" }}>London</p>
-          <span>
-            <IoIosCloudy />
-            <p>Cloudy</p>
-          </span>
-        </section>
-        <section>
-          <p style={{ borderBottom: "solid 1px black" }}>Details</p>
-          {weatherDetails.map((detail) => {
-            return (
-              <div key={detail.property} className={styles.weatherProperty}>
-                <p>{detail.property}</p>
-                <p>{detail.value}</p>
+      {!loading ? (
+        <>
+          <Navbar />
+          <main className={styles.weatherDetailPage}>
+            <section>
+              <h2>{weatherData.main?.temp} farenheit</h2>
+              <p style={{ fontWeight: "bold", marginTop: "-10px" }}>{weatherData.name}</p>
+              <span>
+                <IoIosCloudy />
+                <p>{weatherData?.weather[0]?.description}</p>
+              </span>
+            </section>
+            <section>
+              <p style={{ borderBottom: "solid 1px black" }}>Details</p>
+              <div className={styles.weatherProperty}>
+                <p>Humidity</p>
+                <p>{weatherData.main?.humidity}%</p>
               </div>
-            );
-          })}
-        </section>
-      </main>
+
+              <div className={styles.weatherProperty}>
+                <p>Pressure</p>
+                <p>{weatherData.main?.pressure}</p>
+              </div>
+
+              <div className={styles.weatherProperty}>
+                <p>Visibility</p>
+                <p>{weatherData.visibility}</p>
+              </div>
+            </section>
+          </main>
+        </>
+      ) : null}
     </>
   );
 }
