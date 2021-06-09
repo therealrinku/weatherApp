@@ -60,8 +60,11 @@
     flex-direction: column;
   }
 
-  .weatherDetailPage section:first-child,
-  .weatherDetailPage section:last-child {
+  .weatherDetailPage section:first-child {
     width: 100%;
+  }
+
+  .weatherDetailPage section:last-child {
+    display: none;
   }
 }
