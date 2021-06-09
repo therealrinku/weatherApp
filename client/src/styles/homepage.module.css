@@ -1,0 +1,17 @@
+.homepage {
+  display: flex;
+  align-items: center;
+}
+
+.homepage img,
+.homepage section {
+  width: 50%;
+  height: 100vh;
+}
+
+.homepage section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
