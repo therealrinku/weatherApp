@@ -14,6 +14,7 @@ function verifyJWT(req, res, next) {
   jwt.verify(token, configs.ACCESS_TOKEN_SECRET, (err, user) => {
     if (err) return res.status(403).status("No Access");
     req.user = user;
+    next();
   });
 }
 
