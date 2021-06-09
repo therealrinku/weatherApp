@@ -19,9 +19,14 @@
   text-decoration: none;
 }
 
-.whiteColoredLink a,
-.whiteColoredLink {
+.whiteColoredLink a {
   color: white;
+}
+
+.navbar button {
+  border: none;
+  outline: none;
+  background: inherit;
 }
 
 .navbar ul {

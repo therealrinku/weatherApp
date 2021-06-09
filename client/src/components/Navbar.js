@@ -4,7 +4,12 @@ import { useContext, useState } from "react";
 import UserContext from "../userContext";
 
 export default function Navbar() {
-  const { userEmail } = useContext(UserContext);
+  const { userEmail, setUserAccessToken, setUserEmail } = useContext(UserContext);
+
+  const Logout = () => {
+    setUserAccessToken("");
+    setUserEmail("");
+  };
 
   return (
     <nav className={styles.navbar}>
@@ -13,7 +18,7 @@ export default function Navbar() {
           <Link to="/">weatherApp</Link>
         </ul>
 
-        <ul>{userEmail ? userEmail : <Link to="/auth">Login</Link>}</ul>
+        <ul>{userEmail ? <button onClick={Logout}>Logout</button> : <Link to="/auth">Login</Link>}</ul>
       </div>
     </nav>
   );
