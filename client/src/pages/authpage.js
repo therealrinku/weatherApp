@@ -24,17 +24,20 @@ export default function AuthPage() {
 
   const Login = (e) => {
     e.preventDefault();
+    setServerIsBusy(true);
     axios
       .post(apiUrl + "/auth/login", { email, password })
       .then((res) => {
         //setting data
         setUserEmail(res.data.email);
         setUserAccessToken(res.data.token);
+        setServerIsBusy(false);
         //redirecting to homepage
         history.push("/");
       })
       .catch((err) => {
         setError(err.message);
+        setServerIsBusy(false);
       });
   };
 
