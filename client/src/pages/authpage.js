@@ -42,7 +42,9 @@ export default function AuthPage() {
         </button>
       </form>
 
-      <p style={{ margin: "35px 0 -5px 0", color: "gray" }}>Already have an account?</p>
+      <p style={{ margin: "35px 0 -5px 0", color: "gray" }}>
+        {loginMode ? "Don't have an account?" : "Already have an account?"}
+      </p>
       <button style={{ border: "none" }} onClick={() => setLoginMode((prev) => !prev)}>
         {!loginMode ? "Login" : "Signup"} to WeatherApp
       </button>
