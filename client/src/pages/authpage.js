@@ -2,13 +2,16 @@ import styles from "../styles/authpage.module.css";
 import { Link } from "react-router-dom";
 import { TiWeatherCloudy } from "react-icons/ti";
 import { FiArrowRight } from "react-icons/fi";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import apiUrl from "../apiUrl";
+import UserContext from "../userContext";
 
 export default function AuthPage() {
   const [loginMode, setLoginMode] = useState(true);
   const [serverIsBusy, setServerIsBusy] = useState(false);
+
+  const { setUserEmail, setUserAccessToken } = useContext(UserContext);
 
   //form handlers;
   const [email, setEmail] = useState("");
@@ -21,7 +24,8 @@ export default function AuthPage() {
     axios
       .post(apiUrl + "/auth/login", { email, password })
       .then((res) => {
-        //store jwt
+        setUserEmail(res.email);
+        setUserAccessToken(res.token);
       })
       .catch((err) => {
         setError(err.message);
