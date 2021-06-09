@@ -20,6 +20,10 @@
   text-decoration: none;
 }
 
+.whiteColoredLink a {
+  color: white;
+}
+
 .navbar ul {
   padding: 0;
 }

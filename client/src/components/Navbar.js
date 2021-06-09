@@ -5,7 +5,7 @@ export default function Navbar() {
   return (
     <nav className={styles.navbar}>
       <div>
-        <ul>
+        <ul className={styles.whiteColoredLink}>
           <Link src="/">weatherApp</Link>
         </ul>
 
