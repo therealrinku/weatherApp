@@ -1,7 +1,7 @@
 const pg = require("pg");
-const dbUrl = require("./dbUrl");
+const configs = require("./config");
 
-const db = new pg.Client(dbUrl);
+const db = new pg.Client(configs.DB_URL);
 
 db.connect()
   .then(() => {
