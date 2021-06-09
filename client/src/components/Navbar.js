@@ -6,11 +6,11 @@ export default function Navbar() {
     <nav className={styles.navbar}>
       <div>
         <ul className={styles.whiteColoredLink}>
-          <Link src="/">weatherApp</Link>
+          <Link to="/">weatherApp</Link>
         </ul>
 
         <ul>
-          <Link src="/auth">Login</Link>
+          <Link to="/auth">Login</Link>
         </ul>
       </div>
     </nav>
