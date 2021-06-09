@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import apiUrl from "../apiUrl";
 import UserContext from "../userContext";
+import LoginButton from "../components/LoginButton";
 
 export default function WeatherDetailPage() {
   const params = useParams();
@@ -86,7 +87,16 @@ export default function WeatherDetailPage() {
         </>
       ) : (
         <div className={styles.infoView}>
-          <p>{!error ? "Loading..." : error}</p>
+          <p>
+            {!error ? (
+              "Loading..."
+            ) : (
+              <>
+                <p>{error}</p>
+                <LoginButton />
+              </>
+            )}
+          </p>
         </div>
       )}
     </>
