@@ -1,13 +1,16 @@
 import Navbar from "../components/Navbar";
 import styles from "../styles/weatherDetailPage.module.css";
 import { IoIosCloudy, IoRainyOutline, IoSunnySharp } from "react-icons/all";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import apiUrl from "../apiUrl";
+import UserContext from "../userContext";
 
 export default function WeatherDetailPage() {
   const params = useParams();
+
+  const { userAccessToken } = useContext(UserContext);
 
   const [weatherData, setWeatherData] = useState({});
   const [loading, setLoading] = useState(true);
@@ -23,7 +26,11 @@ export default function WeatherDetailPage() {
 
   useEffect(() => {
     axios
-      .get(`${apiUrl}/weather/${params.city}`)
+      .get(`${apiUrl}/weather/${params.city}`, {
+        headers: {
+          Authorization: "Bearer " + userAccessToken,
+        },
+      })
       .then((res) => {
         setLoading(false);
         setWeatherData(res.data);

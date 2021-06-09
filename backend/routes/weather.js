@@ -5,6 +5,14 @@ const jwt = require("jsonwebtoken");
 
 const apiURL = "https://api.openweathermap.org/data/2.5/weather?";
 
+router.get("/:cityName", verifyJWT, async (req, res) => {
+  const data = await axios.get(apiURL + `q=${req.params.cityName}&appid=${configs.API_KEY}`).then((dta) => {
+    return dta.data;
+  });
+
+  res.send(data);
+});
+
 function verifyJWT(req, res, next) {
   const authHeader = req.headers["authorization"];
   const token = authHeader && authHeader.split(" ")[1];
@@ -16,13 +24,5 @@ function verifyJWT(req, res, next) {
     next();
   });
 }
-
-router.get("/:cityName", verifyJWT, async (req, res) => {
-  const data = await axios.get(apiURL + `q=${req.params.cityName}&appid=${configs.API_KEY}`).then((dta) => {
-    return dta.data;
-  });
-
-  res.send(data);
-});
 
 module.exports = router;

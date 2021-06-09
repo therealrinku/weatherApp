@@ -24,8 +24,9 @@ export default function AuthPage() {
     axios
       .post(apiUrl + "/auth/login", { email, password })
       .then((res) => {
-        setUserEmail(res.email);
-        setUserAccessToken(res.token);
+        setUserEmail(res.data.email);
+        setUserAccessToken(res.data.token);
+        console.log(res.data.token);
       })
       .catch((err) => {
         setError(err.message);
