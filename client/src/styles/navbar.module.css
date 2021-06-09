@@ -19,7 +19,8 @@
   text-decoration: none;
 }
 
-.whiteColoredLink a {
+.whiteColoredLink a,
+.whiteColoredLink {
   color: white;
 }
 
