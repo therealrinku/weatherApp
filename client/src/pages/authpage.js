@@ -14,15 +14,17 @@ export default function AuthPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const [error, setError] = useState(null);
+
   const Login = (e) => {
     e.preventDefault();
     axios
       .post(apiUrl + "/auth/login", { email, password })
       .then((res) => {
-        console.log(res.data);
+        //store jwt
       })
       .catch((err) => {
-        alert(err.message);
+        setError(err.message);
       });
   };
 
@@ -41,7 +43,7 @@ export default function AuthPage() {
           setServerIsBusy(false);
         })
         .catch((err) => {
-          alert(err.message);
+          setError(err.message);
           setServerIsBusy(false);
         });
     }
@@ -51,6 +53,7 @@ export default function AuthPage() {
   useEffect(() => {
     setEmail("");
     setPassword("");
+    setError(null);
   }, [loginMode]);
 
   return (
@@ -85,6 +88,8 @@ export default function AuthPage() {
           <FiArrowRight />
         </button>
       </form>
+
+      <p style={{ color: "red", fontSize: "14px" }}>{error}</p>
 
       <p style={{ margin: "35px 0 -5px 0", color: "gray" }}>
         {loginMode ? "Don't have an account?" : "Already have an account?"}
