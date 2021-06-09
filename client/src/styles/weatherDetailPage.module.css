@@ -47,7 +47,7 @@
   margin-left: 5px;
 }
 
-.loadingText {
+.infoView {
   display: flex;
   flex-direction: column;
   align-items: center;

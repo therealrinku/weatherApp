@@ -11,6 +11,7 @@ export default function WeatherDetailPage() {
 
   const [weatherData, setWeatherData] = useState({});
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const imagesForThisWeather = {};
 
@@ -36,13 +37,14 @@ export default function WeatherDetailPage() {
         });
       })
       .catch((err) => {
-        alert(err.message);
+        setLoading(false);
+        setError(err.message);
       });
   }, []);
 
   return (
     <>
-      {!loading ? (
+      {!loading && !error ? (
         <>
           <Navbar />
           <main className={styles.weatherDetailPage}>
@@ -76,8 +78,8 @@ export default function WeatherDetailPage() {
           </main>
         </>
       ) : (
-        <div className={styles.loadingText}>
-          <p>Loading...</p>
+        <div className={styles.infoView}>
+          <p>{!error ? "Loading..." : error}</p>
         </div>
       )}
     </>
