@@ -69,7 +69,7 @@ export default function AuthPage() {
       <h2>{loginMode ? "Login to WeatherApp" : "Create a WeatherApp account"}</h2>
 
       <form onSubmit={loginMode ? Login : Signup}>
-        <label for="email">Email Address</label>
+        <label htmlFor="email">Email Address</label>
         <input
           type="email"
           id="email"
@@ -78,7 +78,7 @@ export default function AuthPage() {
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-        <label for="password">Password</label>
+        <label htmlFor="password">Password</label>
         <input
           type="password"
           id="password"
