@@ -14,8 +14,10 @@ router.get("/:cityName", verifyJWT, async (req, res) => {
 });
 
 function verifyJWT(req, res, next) {
+  //getting token from the header
   const authHeader = req.headers["authorization"];
   const token = authHeader && authHeader.split(" ")[1];
+
   if (!token) res.status(401).send("Invalid Token");
 
   jwt.verify(token, configs.ACCESS_TOKEN_SECRET, (err, user) => {
