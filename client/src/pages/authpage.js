@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { TiWeatherCloudy } from "react-icons/ti";
 import { FiArrowRight } from "react-icons/fi";
 import { useContext, useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import apiUrl from "../apiUrl";
 import UserContext from "../userContext";
@@ -10,6 +11,8 @@ import UserContext from "../userContext";
 export default function AuthPage() {
   const [loginMode, setLoginMode] = useState(true);
   const [serverIsBusy, setServerIsBusy] = useState(false);
+
+  const history = useHistory();
 
   const { setUserEmail, setUserAccessToken } = useContext(UserContext);
 
@@ -24,9 +27,11 @@ export default function AuthPage() {
     axios
       .post(apiUrl + "/auth/login", { email, password })
       .then((res) => {
+        //setting data
         setUserEmail(res.data.email);
         setUserAccessToken(res.data.token);
-        console.log(res.data.token);
+        //redirecting to homepage
+        history.push("/");
       })
       .catch((err) => {
         setError(err.message);
@@ -36,7 +41,7 @@ export default function AuthPage() {
   const Signup = (e) => {
     e.preventDefault();
     setServerIsBusy(true);
-    //email and password validation
+    //password validation
     if (password.length < 8) {
       alert("password cannot be less than 8 characters.");
     } else {
