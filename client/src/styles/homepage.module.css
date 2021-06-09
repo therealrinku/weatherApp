@@ -25,3 +25,20 @@
 .homepage a:hover {
   text-decoration: underline;
 }
+
+@media (max-width: 750px) {
+  .homepage img {
+    display: none;
+  }
+
+  .homepage section {
+    background-image: url("https://bit.ly/3w98Nn5");
+    background-size: cover;
+    width: 100%;
+    color: white;
+  }
+
+  .homepage a {
+    color: white;
+  }
+}
