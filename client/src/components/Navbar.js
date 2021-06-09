@@ -1,14 +1,20 @@
 import styles from "../styles/navbar.module.css";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useContext, useState } from "react";
 import UserContext from "../userContext";
 
 export default function Navbar() {
   const { userEmail, setUserAccessToken, setUserEmail } = useContext(UserContext);
 
+  const history = useHistory();
+
   const Logout = () => {
     setUserAccessToken("");
     setUserEmail("");
+
+    //redirecting to home after logout
+    history.push("/");
   };
 
   return (
