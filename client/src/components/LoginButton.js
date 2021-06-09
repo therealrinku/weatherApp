@@ -6,7 +6,7 @@ export default function LoginButton() {
 
   return (
     <button className={styles.loginButton} onClick={() => history.push("/auth")}>
-      Login
+      Login for access
     </button>
   );
 }
