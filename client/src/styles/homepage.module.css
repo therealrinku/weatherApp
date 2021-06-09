@@ -15,3 +15,13 @@
   align-items: center;
   justify-content: center;
 }
+
+.homepage a {
+  color: black;
+  text-decoration: none;
+  margin: 10px 0;
+}
+
+.homepage a:hover {
+  text-decoration: underline;
+}
