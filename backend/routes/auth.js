@@ -1,4 +1,6 @@
 const router = require("express").Router();
+const db = require("../db");
+const bcrypt = require("bcrypt");
 
 router.post("/login", (req, res) => {
   db.query(`SELECT email,password FROM users WHERE email='${req.body.email}'`, (err, res1) => {

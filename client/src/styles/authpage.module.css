@@ -67,6 +67,14 @@
   background: black;
 }
 
+.authpage form button:disabled {
+  opacity: 0.6;
+}
+
+.authpage form button:disabled:hover {
+  cursor: unset;
+}
+
 @media (max-width: 750px) {
   .authpage form {
     width: 90vw;
