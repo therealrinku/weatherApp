@@ -16,6 +16,14 @@ export default function AuthPage() {
 
   const Login = (e) => {
     e.preventDefault();
+    axios
+      .post(apiUrl + "/auth/login", { email, password })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
   };
 
   const Signup = (e) => {
