@@ -7,9 +7,14 @@ const apiKey = "d289ddb0716da059849493624687c4d5";
 const apiURL = "api.openweathermap.org/data/2.5/weather?";
 
 router.get("/:cityName", async (req, res) => {
-  const data = await axios.get(apiURL + `q=${req.body.cityName}&appid=${apiKey}`).then((dta) => {
-    return dta;
-  });
+  const data = await axios
+    .get(apiURL + `q=${req.params.cityName}&appid=${apiKey}`)
+    .then((dta) => {
+      return dta;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   res.send(data);
 });
 
