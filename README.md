@@ -1,5 +1,5 @@
 # This is a full stack weather Application
-* sorry due to lack of time readme.md is not in a good situation.
+* sorry due to lack of time readme.md is not that great
 
 
 To run on local machine
