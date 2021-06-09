@@ -57,7 +57,11 @@ export default function WeatherDetailPage() {
             </section>
           </main>
         </>
-      ) : null}
+      ) : (
+        <div className={styles.loadingText}>
+          <p>Loading...</p>
+        </div>
+      )}
     </>
   );
 }

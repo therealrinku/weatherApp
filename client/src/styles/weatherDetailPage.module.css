@@ -47,6 +47,14 @@
   margin-left: 5px;
 }
 
+.loadingText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
 @media (max-width: 750px) {
   .weatherDetailPage {
     flex-direction: column;
