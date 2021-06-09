@@ -37,4 +37,8 @@
   .navbar a {
     color: white;
   }
+
+  .navbar button {
+    color: white;
+  }
 }
