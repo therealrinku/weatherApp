@@ -26,3 +26,9 @@
 .navbar ul {
   padding: 0;
 }
+
+@media (max-width: 750px) {
+  .navbar a {
+    color: white;
+  }
+}

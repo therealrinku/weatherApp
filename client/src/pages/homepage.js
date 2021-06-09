@@ -1,16 +1,9 @@
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import styles from "../styles/homepage.module.css";
+import cities from "../cities";
 
 export default function Homepage() {
-  const cities = [
-    { cityName: "Hongkong" },
-    { cityName: "Paris" },
-    { cityName: "London" },
-    { cityName: "California" },
-    { cityName: "Tokyo" },
-  ];
-
   return (
     <>
       <Navbar />
