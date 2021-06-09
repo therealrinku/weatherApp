@@ -2,7 +2,6 @@ const { default: axios } = require("axios");
 const router = require("express").Router();
 const configs = require("../config");
 const jwt = require("jsonwebtoken");
-const configs = require("../config");
 
 const apiURL = "https://api.openweathermap.org/data/2.5/weather?";
 
